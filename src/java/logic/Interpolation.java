@@ -47,7 +47,7 @@ public class Interpolation {
     interpolationNodes.put(key, node);
   }
 
-  public void countInterpolationPolynom() {
+  public PolynomialGauss countInterpolationPolynom() {
     interpolationPolynom = new PolynomialGauss();
 
     for (int i = 0; i < 2 * n + 2; i++) {
@@ -58,6 +58,8 @@ public class Interpolation {
     System.out.println(interpolationPolynom);
 
     System.out.println("P(2) = " + format(interpolationPolynom.value(2.0)));
+
+    return interpolationPolynom;
   }
 
   private void printInterpolationNodes() {

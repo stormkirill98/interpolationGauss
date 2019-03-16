@@ -8,6 +8,6 @@ public class Function {
   public Function(){}
 
   public static Double value(Double x){
-    return Math.sin(x);
+    return 3*x*x - 2*x + 10;
   }
 }

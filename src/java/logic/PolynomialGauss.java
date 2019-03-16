@@ -73,19 +73,21 @@ public class PolynomialGauss {
     if (!zero(value0)){
       result.append(format(value0)).append(" + ");
     }
-    for (int i = 0; i < index - 1; i++){
+    for (int i = 0; i < index; i++){
       Double value = functionValues.get(i);
       if (zero(value)){
         continue;
       }
 
       result.append(format(value)).append("*")
-              .append(polynoms.toString(i)).append(" + ");
+              .append(polynoms.toString(i)).append("\n+ ");
     }
 
-    result.deleteCharAt(result.length() - 2);
+    result.delete(result.length() - 2, result.length());
     return result.toString();
   }
 
-
+  public int polynomsSize(){
+    return polynoms.size();
+  }
 }

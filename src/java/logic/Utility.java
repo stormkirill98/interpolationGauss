@@ -6,7 +6,7 @@ class Utility {
   static final double TOLERANCE = 1.0E-6;
 
   static String format(Double value){
-    DecimalFormat decimalFormat = new DecimalFormat("##.##");
+    DecimalFormat decimalFormat = new DecimalFormat("##.####");
     return decimalFormat.format((value));
   }
 
