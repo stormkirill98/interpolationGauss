@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="465.0"
+            prefWidth="853.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.PrimaryController">
+    <children>
+        <LineChart fx:id="chart" layoutX="333.0" layoutY="33.0" AnchorPane.rightAnchor="20.0">
+            <xAxis>
+                <CategoryAxis side="BOTTOM"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis side="LEFT"/>
+            </yAxis>
+        </LineChart>
+        <HBox fx:id="function" layoutX="34.0" layoutY="115.0" prefHeight="30.0" prefWidth="251.0"
+              AnchorPane.leftAnchor="34.0">
+            <children>
+                <Label prefHeight="30.0" prefWidth="33.0" text="y = ">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="a" prefHeight="30.0" prefWidth="35.0">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </TextField>
+                <Label prefHeight="30.0" prefWidth="45.0" text="sin(tg">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="b" prefHeight="30.0" prefWidth="35.0">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </TextField>
+                <Label prefHeight="30.0" prefWidth="50.0" text="x)*sin(">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="c" prefHeight="30.0" prefWidth="35.0">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </TextField>
+                <Label prefHeight="30.0" prefWidth="18.0" text="x)">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+        <TextField layoutX="71.0" layoutY="64.0" prefHeight="30.0" prefWidth="35.0" fx:id="xBegin">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </TextField>
+        <TextField layoutX="125.0" layoutY="64.0" prefHeight="30.0" prefWidth="35.0" fx:id="xEnd">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </TextField>
+        <TextField fx:id="n" layoutX="231.0" layoutY="64.0" prefHeight="30.0" prefWidth="35.0">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </TextField>
+    </children>
+</AnchorPane>
