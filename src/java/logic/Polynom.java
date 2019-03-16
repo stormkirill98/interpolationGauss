@@ -5,20 +5,26 @@ import java.util.ArrayList;
 public class Polynom extends ArrayList<Multiplier> {
 
   public void add(){
-    int n, k;
+    int n = 0, k = 1;
 
     if (size() == 0) {
       n = 0;
       k = 1;
-    } else {
+    }
+
+    if (size() == 1){
+      n = -1;
+      k = 1;
+    }
+
+    if (size() > 1) {
       n = size() % 2 == 0
-              ? size() - 1
-              : -size();
+              ? size() / 2
+              : -(size() - 1);
       k = size() + 1;
     }
 
-    Multiplier multiplier = new Multiplier(n, k);
-    add(multiplier);
+    add(new Multiplier(n, k));
   }
 
 

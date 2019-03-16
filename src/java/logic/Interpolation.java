@@ -48,7 +48,7 @@ public class Interpolation {
   public void countInterpolationPolynom() {
     interpolationPolynom = new PolynomialGauss();
 
-    for (int i = 0; i < 2 * n + 1; i++) {
+    for (int i = 0; i < 2 * n + 2; i++) {
       interpolationPolynom.add();
     }
 
@@ -63,7 +63,8 @@ public class Interpolation {
       System.out.printf(" %.2f", interpolationNodes.get(i));
       System.out.printf(" %.2f", interpolationNodes.get(-i));
     }
-    System.out.printf(" %.2f", interpolationNodes.get(i));
+
+    System.out.printf(" %.2f\n", interpolationNodes.get(i));
   }
 
   private void print() {

@@ -16,8 +16,6 @@ public class PolynomialGauss {
   public PolynomialGauss(){
     value0 = Function.value(0.0);
     value1 = Function.value(0.5);
-
-    polynoms.add(null);
   }
 
   public void add(){
@@ -29,18 +27,18 @@ public class PolynomialGauss {
   //TODO: не хватате последнего коэффициента
   private void addValue(){
     if (index == 0){
-      values.add(value0);
+      values.add(value1);
       return;
     }
     if (index == 1){
-      values.add(value1);
+      values.add(value0 * value0);
       return;
     }
 
     Double value = values.get(index - 2);
     value = index % 2 == 0
-            ? value * value0
-            : value * value1;
+            ? value * value1
+            : value * value0;
 
     values.add(value);
   }
@@ -53,12 +51,13 @@ public class PolynomialGauss {
   public String toString(){
     StringBuilder result = new StringBuilder();
 
-    result.append(values.get(0)).append(" + ");
-    for (int i = 1; i < index; i++){
+    result.append(value0).append(" + ");
+    for (int i = 0; i < index - 1; i++){
       result.append(values.get(i)).append("*")
               .append(polynoms.get(i)).append(" + ");
     }
 
+    result.deleteCharAt(result.length() - 2);
     return result.toString();
   }
 }

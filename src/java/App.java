@@ -17,7 +17,7 @@ public class App extends Application {
         stage.setScene(scene);
         stage.show();
 
-        Interpolation interpolation = new Interpolation(-1.0,5.0,1);
+        Interpolation interpolation = new Interpolation(-1.0,5.0,2);
         interpolation.countInterpolationPolynom();
     }
 
