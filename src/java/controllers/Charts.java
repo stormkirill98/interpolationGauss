@@ -11,6 +11,7 @@ import logic.Interpolation;
 import logic.Polynomial;
 import logic.PolynomialGauss;
 
+@SuppressWarnings({"Duplicates"})
 public class Charts {
   private Pane pane;
 
@@ -56,11 +57,13 @@ public class Charts {
     polynomial.setName("Polynomial");
   }
 
-  public void buildFunction(){
+  public void buildFunction(double xStart, double xEnd){
+    chart.getData().clear();
+
     ObservableList<XYChart.Data<Double, Double>> data
             = FXCollections.observableArrayList();
 
-    for (double x = -5; x < 5; x += 0.1){
+    for (double x = xStart; x < xEnd; x += 0.1){
       data.add(new XYChart.Data<>(x, Function.value(x)));
     }
 
@@ -69,15 +72,14 @@ public class Charts {
     chart.getData().add(function);
   }
 
-  public void buildPolynomial(){
+  public void buildPolynomial(PolynomialGauss polynomialGauss, double xStart, double xEnd){
     ObservableList<XYChart.Data<Double, Double>> data
             = FXCollections.observableArrayList();
 
-    Interpolation interpolation = new Interpolation(-5.0,5.0,5);
-    PolynomialGauss polynomialGauss = interpolation.countInterpolationPolynom();
+
     System.out.println(polynomialGauss.polynomsSize());
 
-    for (double x = -5; x < 5; x += 0.1){
+    for (double x = xStart; x < 5; x += 0.1){
       data.add(new XYChart.Data<>(x, polynomialGauss.value(x)));
     }
 

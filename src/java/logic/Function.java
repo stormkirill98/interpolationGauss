@@ -1,13 +1,19 @@
 package logic;
 
 public class Function {
-  private Double a, b, c;
+  private static Double a;
+  private static Double b;
+  private static Double c;
 
   String function = "sin(x)";
 
-  public Function(){}
+  public Function(Double a, Double b, Double c){
+    Function.a = a;
+    Function.b = b;
+    Function.c = c;
+  }
 
   public static Double value(Double x){
-    return 3*x*x - 2*x + 10;
+    return a * Math.sin(Math.tan(b * x)) * Math.sin(c * x);
   }
 }

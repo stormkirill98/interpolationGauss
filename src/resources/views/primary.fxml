@@ -96,7 +96,15 @@
                 </HBox>
             </children>
         </GridPane>
-        <Button layoutX="14.0" layoutY="208.0" mnemonicParsing="false" onAction="#buildGraph" text="Button" />
+        <Button layoutX="85.0" layoutY="175.0" mnemonicParsing="false" onAction="#buildGraph" text="Build">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
         <Pane fx:id="chartPane" layoutX="365.0" layoutY="11.0" prefHeight="450.0" prefWidth="450.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+      <Button layoutX="14.0" layoutY="175.0" mnemonicParsing="false" onAction="#createFunction" text="Create">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>
