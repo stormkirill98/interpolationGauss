@@ -21,6 +21,10 @@ public class Multiplier {
 
   @Override
   public String toString(){
+    if (n == 0 && k == 1){
+      return "x";
+    }
+
     return n > 0 ? "[(x + " + n + ")/" + k + "]"
                  : "[(x - " + -n + ")/" + k + "]";
   }

@@ -3,7 +3,10 @@ package logic;
 import java.util.ArrayList;
 import java.util.List;
 
+import static logic.Utility.*;
+
 public class PolynomialGauss {
+
   //function value for every added
   private List<Double> values = new ArrayList<>();
   private Polynom polynoms = new Polynom();
@@ -51,13 +54,22 @@ public class PolynomialGauss {
   public String toString(){
     StringBuilder result = new StringBuilder();
 
-    result.append(value0).append(" + ");
+    if (zero(value0)){
+      result.append(format(value0)).append(" + ");
+    }
     for (int i = 0; i < index - 1; i++){
-      result.append(values.get(i)).append("*")
-              .append(polynoms.get(i)).append(" + ");
+      Double value = values.get(i);
+      if (zero(value)){
+        continue;
+      }
+
+      result.append(format(value)).append("*")
+              .append(polynoms.toString(i)).append(" + ");
     }
 
     result.deleteCharAt(result.length() - 2);
     return result.toString();
   }
+
+
 }

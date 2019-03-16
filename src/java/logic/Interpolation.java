@@ -52,6 +52,7 @@ public class Interpolation {
       interpolationPolynom.add();
     }
 
+    System.out.print("Interpolation polynomial: ");
     System.out.println(interpolationPolynom);
   }
 

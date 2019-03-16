@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Polynom extends ArrayList<Multiplier> {
 
-  public void add(){
+  public void add() {
     int n = 0, k = 1;
 
     if (size() == 0) {
@@ -12,9 +12,9 @@ public class Polynom extends ArrayList<Multiplier> {
       k = 1;
     }
 
-    if (size() == 1){
+    if (size() == 1) {
       n = -1;
-      k = 1;
+      k = 2;
     }
 
     if (size() > 1) {
@@ -28,22 +28,21 @@ public class Polynom extends ArrayList<Multiplier> {
   }
 
 
-  public Double value(Double x, int index){
+  public Double value(Double x, int index) {
     Double value = 0.0;
 
-    for(int i = 0; i < index; i++){
+    for (int i = 0; i < index; i++) {
       value += get(i).value(x);
     }
 
     return value;
   }
 
-  @Override
-  public String toString(){
+  public String toString(int indexTo) {
     StringBuilder result = new StringBuilder();
 
-    for (Multiplier multiplier : this) {
-      result.insert(0, multiplier + " * ");
+    for (int i = 0; i <= indexTo; i++) {
+      result.append(get(i)).append(" * ");
     }
 
     result.deleteCharAt(result.length() - 2);
