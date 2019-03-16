@@ -3,7 +3,7 @@ package logic;
 import java.text.DecimalFormat;
 
 class Utility {
-  static final double TOLERANCE = 1.0E-6;
+  static final double TOLERANCE = 1.0E-12;
 
   static String format(Double value){
     DecimalFormat decimalFormat = new DecimalFormat("##.####");
