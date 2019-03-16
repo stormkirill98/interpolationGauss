@@ -8,8 +8,8 @@ import static logic.Utility.*;
 public class PolynomialGauss {
 
   //function value for every added
-  private List<Double> values = new ArrayList<>();
-  private Polynom polynoms = new Polynom();
+  private List<Double> functionValues = new ArrayList<>();
+  private Polynomial polynoms = new Polynomial();
 
   private Double value0;
   private Double value1;
@@ -22,32 +22,48 @@ public class PolynomialGauss {
   }
 
   public void add(){
-    addValue();
+    addFunctionValue();
     addPolynomial();
     index++;
   }
 
   //TODO: не хватате последнего коэффициента
-  private void addValue(){
+  private void addFunctionValue(){
     if (index == 0){
-      values.add(value1);
+      functionValues.add(value1);
       return;
     }
     if (index == 1){
-      values.add(value0 * value0);
+      functionValues.add(value0 * value0);
       return;
     }
 
-    Double value = values.get(index - 2);
+    Double value = functionValues.get(index - 2);
     value = index % 2 == 0
-            ? value * value1
-            : value * value0;
+            ? value * value1 * value1
+            : value * value0 * value0;
 
-    values.add(value);
+    functionValues.add(value);
   }
 
   private void addPolynomial(){
     polynoms.add();
+  }
+
+  public Double value(Double x){
+    Double result = 0.0;
+
+    result += value0;
+
+    for (int i = 0; i < index - 1; i++){
+      Double value = functionValues.get(i);
+      if (zero(value)){
+        continue;
+      }
+      result += value * polynoms.value(x, i);
+    }
+
+    return result;
   }
 
   @Override
@@ -58,7 +74,7 @@ public class PolynomialGauss {
       result.append(format(value0)).append(" + ");
     }
     for (int i = 0; i < index - 1; i++){
-      Double value = values.get(i);
+      Double value = functionValues.get(i);
       if (zero(value)){
         continue;
       }

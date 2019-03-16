@@ -3,6 +3,8 @@ package logic;
 import java.util.HashMap;
 import java.util.Map;
 
+import static logic.Utility.format;
+
 public class Interpolation {
   private PolynomialGauss interpolationPolynom;
 
@@ -54,6 +56,8 @@ public class Interpolation {
 
     System.out.print("Interpolation polynomial: ");
     System.out.println(interpolationPolynom);
+
+    System.out.println("P(2) = " + format(interpolationPolynom.value(2.0)));
   }
 
   private void printInterpolationNodes() {

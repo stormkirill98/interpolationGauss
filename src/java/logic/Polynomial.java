@@ -2,7 +2,7 @@ package logic;
 
 import java.util.ArrayList;
 
-public class Polynom extends ArrayList<Multiplier> {
+public class Polynomial extends ArrayList<Multiplier> {
 
   public void add() {
     int n = 0, k = 1;
@@ -28,20 +28,20 @@ public class Polynom extends ArrayList<Multiplier> {
   }
 
 
-  public Double value(Double x, int index) {
-    Double value = 0.0;
+  public Double value(Double x, int indexUp) {
+    Double value = 1.0;
 
-    for (int i = 0; i < index; i++) {
-      value += get(i).value(x);
+    for (int i = 0; i <= indexUp; i++) {
+      value *= get(i).value(x);
     }
 
     return value;
   }
 
-  public String toString(int indexTo) {
+  public String toString(int indexUp) {
     StringBuilder result = new StringBuilder();
 
-    for (int i = 0; i <= indexTo; i++) {
+    for (int i = 0; i <= indexUp; i++) {
       result.append(get(i)).append(" * ");
     }
 
