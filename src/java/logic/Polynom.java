@@ -45,7 +45,8 @@ public class Polynom extends ArrayList<Multiplier> {
       result.append(get(i)).append(" * ");
     }
 
-    result.deleteCharAt(result.length() - 2);
+
+    result.delete(result.length() - 3, result.length());
     return result.toString();
   }
 
