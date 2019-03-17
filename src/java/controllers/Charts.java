@@ -7,8 +7,6 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.Pane;
 import logic.Function;
-import logic.Interpolation;
-import logic.Polynomial;
 import logic.PolynomialGauss;
 
 @SuppressWarnings({"Duplicates"})
@@ -22,6 +20,9 @@ public class Charts {
 
   private XYChart.Series function = new XYChart.Series();
   private XYChart.Series polynomial = new XYChart.Series();
+
+  private double xBegin = 0.0,
+                 xEnd = 0.0;
 
 
   public Charts(Pane pane){
@@ -57,13 +58,21 @@ public class Charts {
     polynomial.setName("Polynomial");
   }
 
-  public void buildFunction(double xStart, double xEnd){
-    chart.getData().clear();
+  public void setXBegin(double xStart) {
+    this.xBegin = xStart;
+  }
+
+  public void setXEnd(double xEnd) {
+    this.xEnd = xEnd;
+  }
+
+  public void buildFunction(){
+    chart.getData().removeAll(function);
 
     ObservableList<XYChart.Data<Double, Double>> data
             = FXCollections.observableArrayList();
 
-    for (double x = xStart; x < xEnd; x += 0.1){
+    for (double x = xBegin; x < xEnd; x += 0.1){
       data.add(new XYChart.Data<>(x, Function.value(x)));
     }
 
@@ -72,14 +81,20 @@ public class Charts {
     chart.getData().add(function);
   }
 
-  public void buildPolynomial(PolynomialGauss polynomialGauss, double xStart, double xEnd){
+  public void buildPolynomial(PolynomialGauss polynomialGauss){
+    if (polynomialGauss == null){
+      return;
+    }
+
+    chart.getData().removeAll(polynomial);
+
     ObservableList<XYChart.Data<Double, Double>> data
             = FXCollections.observableArrayList();
 
 
     System.out.println(polynomialGauss.polynomsSize());
 
-    for (double x = xStart; x < 5; x += 0.1){
+    for (double x = xBegin; x < 5; x += 0.1){
       data.add(new XYChart.Data<>(x, polynomialGauss.value(x)));
     }
 

@@ -6,28 +6,51 @@ import java.util.Map;
 import static logic.Utility.format;
 
 public class Interpolation {
-  private PolynomialGauss interpolationPolynom;
-
-  private Double xBegin, xEnd;
+  private static Double xBegin, xEnd;
   private Double x0;
 
   //step interpolation  nodes
   private Double h;
   //count interpolation nodes
-  private int n;
+  private static Integer n;
 
   private Map<Integer, Double> interpolationNodes = new HashMap<>();
 
+  public Interpolation(){
+    if (xBegin == null
+            || xEnd == null
+            || n == null){
+      return;
+    }
+
+    x0 = (xEnd + xBegin) / 2;
+    h = (xEnd - xBegin) / (2 * n + 2);
+    countNodes();
+    print();
+  }
+
   public Interpolation(Double xBegin, Double xEnd, int n) {
-    this.xBegin = xBegin;
-    this.xEnd = xEnd;
+    Interpolation.xBegin = xBegin;
+    Interpolation.xEnd = xEnd;
     x0 = (xEnd + xBegin) / 2;
 
-    this.n = n;
+    Interpolation.n = n;
     h = (xEnd - xBegin) / (2 * n + 2);
 
     countNodes();
     print();
+  }
+
+  public static void setXBegin(Double xBegin) {
+    Interpolation.xBegin = xBegin;
+  }
+
+  public static void setXEnd(Double xEnd) {
+    Interpolation.xEnd = xEnd;
+  }
+
+  public static void setN(int n) {
+    Interpolation.n = n;
   }
 
   private void countNodes() {
@@ -48,7 +71,13 @@ public class Interpolation {
   }
 
   public PolynomialGauss countInterpolationPolynom() {
-    interpolationPolynom = new PolynomialGauss();
+    if (xBegin == null
+            || xEnd == null
+            || n == null) {
+      return null;
+    }
+
+    PolynomialGauss interpolationPolynom = new PolynomialGauss();
 
     for (int i = 0; i < 2 * n + 2; i++) {
       interpolationPolynom.add();

@@ -1,11 +1,11 @@
 package logic;
 
-public class Function {
-  private static Double a;
-  private static Double b;
-  private static Double c;
+import static logic.Utility.format;
 
-  String function = "sin(x)";
+public class Function {
+  private static Double a = 0.0;
+  private static Double b = 0.0;
+  private static Double c = 0.0;
 
   public Function(Double a, Double b, Double c){
     Function.a = a;
@@ -13,7 +13,26 @@ public class Function {
     Function.c = c;
   }
 
+  public static void setA(Double a) {
+    Function.a = a;
+    System.out.println(Function.string());
+  }
+
+  public static void setB(Double b) {
+    Function.b = b;
+    System.out.println(Function.string());
+  }
+
+  public static void setC(Double c) {
+    Function.c = c;
+    System.out.println(Function.string());
+  }
+
   public static Double value(Double x){
     return a * Math.sin(Math.tan(b * x)) * Math.sin(c * x);
+  }
+
+  public static String string(){
+    return format(a) + " * sin(tg" + format(b) + "*x) * sin(" + format(c) + "*x)";
   }
 }

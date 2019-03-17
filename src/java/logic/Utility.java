@@ -2,7 +2,7 @@ package logic;
 
 import java.text.DecimalFormat;
 
-class Utility {
+public class Utility {
   static final double TOLERANCE = 1.0E-12;
 
   static String format(Double value){
@@ -13,4 +13,24 @@ class Utility {
   static boolean zero(Double value){
     return Math.abs(value) < TOLERANCE;
   }
+
+  public static boolean isDouble(String str){
+    return str.matches("[-+]?\\d*[.,]?\\d*");
+  }
+
+
+  public static Double strToDouble(String str){
+    str = str.replace(",", ".");
+
+    if (str.isEmpty()){
+      return 0.0;
+    }
+
+    return Double.valueOf(str);
+  }
+
+  public static boolean isNatural(String str){
+    return str.matches("\\d+");
+  }
 }
+

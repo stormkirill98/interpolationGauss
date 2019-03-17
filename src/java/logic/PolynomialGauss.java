@@ -83,7 +83,9 @@ public class PolynomialGauss {
               .append(polynoms.toString(i)).append("\n+ ");
     }
 
-    result.delete(result.length() - 2, result.length());
+    if (result.length() > 2){
+      result.delete(result.length() - 2, result.length());
+    }
     return result.toString();
   }
 
