@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -11,9 +15,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="465.0" prefWidth="853.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PrimaryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="465.0" prefWidth="853.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PrimaryController">
     <children>
-        <GridPane alignment="CENTER" layoutX="28.0" layoutY="33.0" prefHeight="142.0" prefWidth="279.0" AnchorPane.leftAnchor="20.0">
+        <GridPane alignment="CENTER" layoutX="28.0" layoutY="33.0" prefHeight="142.0" prefWidth="363.0" AnchorPane.leftAnchor="20.0">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             </columnConstraints>
@@ -30,7 +34,7 @@
                                 <Font size="18.0" />
                             </font>
                         </Label>
-                        <TextField prefHeight="30.0" prefWidth="35.0" fx:id="xBegin">
+                        <TextField maxWidth="150.0" minWidth="35.0" prefHeight="30.0" prefWidth="35.0" fx:id="xBegin">
                             <font>
                                 <Font size="14.0" />
                             </font>
@@ -40,7 +44,7 @@
                                 <Font size="18.0" />
                             </font>
                         </Label>
-                        <TextField prefHeight="30.0" prefWidth="35.0" fx:id="xEnd">
+                        <TextField maxWidth="150.0" minWidth="35.0" prefHeight="30.0" prefWidth="35.0" fx:id="xEnd">
                             <font>
                                 <Font size="14.0" />
                             </font>
@@ -54,7 +58,7 @@
                                 <Font size="18.0" />
                             </font>
                         </Label>
-                        <TextField fx:id="n" prefHeight="30.0" prefWidth="35.0">
+                        <TextField fx:id="n" maxWidth="300.0" minWidth="35.0" prefHeight="30.0" prefWidth="35.0">
                             <font>
                                 <Font size="14.0" />
                             </font>
@@ -68,7 +72,7 @@
                                 <Font size="18.0" />
                             </font>
                         </Label>
-                        <TextField fx:id="a" prefHeight="30.0" prefWidth="35.0">
+                        <TextField fx:id="a" maxWidth="70.0" minWidth="35.0" prefHeight="30.0" prefWidth="35.0">
                             <font>
                                 <Font size="14.0" />
                             </font>
@@ -78,7 +82,7 @@
                                 <Font size="18.0" />
                             </font>
                         </Label>
-                        <TextField fx:id="b" prefHeight="30.0" prefWidth="35.0">
+                        <TextField fx:id="b" maxWidth="70.0" minWidth="35.0" prefHeight="30.0" prefWidth="35.0">
                             <font>
                                 <Font size="14.0" />
                             </font>
@@ -88,7 +92,7 @@
                                 <Font size="18.0" />
                             </font>
                         </Label>
-                        <TextField fx:id="c" prefHeight="30.0" prefWidth="35.0">
+                        <TextField fx:id="c" maxWidth="70.0" minWidth="35.0" prefHeight="30.0" prefWidth="35.0">
                             <font>
                                 <Font size="14.0" />
                             </font>

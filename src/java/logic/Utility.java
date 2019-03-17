@@ -26,6 +26,10 @@ public class Utility {
       return 0.0;
     }
 
+    if (str.equals("-")){
+      return -1.0;
+    }
+
     return Double.valueOf(str);
   }
 

@@ -1,11 +1,12 @@
 package controllers;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import logic.Function;
 import logic.Interpolation;
 import logic.PolynomialGauss;
@@ -56,32 +57,33 @@ public class PrimaryController {
       }
 
       Function.setA(strToDouble(newValue));
+
+      changeSizeTextField(a);
     });
 
     b.textProperty().addListener((observable, oldValue, newValue) -> {
-      if(fixInputFunction(b, newValue, oldValue)){
+      if(!fixInputFunction(b, newValue, oldValue)){
         return;
       }
 
       Function.setB(strToDouble(newValue));
+
+      changeSizeTextField(b);
     });
 
     c.textProperty().addListener((observable, oldValue, newValue) -> {
-      if (fixInputFunction(c, newValue, oldValue)){
+      if (!fixInputFunction(c, newValue, oldValue)){
         return;
       }
 
       Function.setC(strToDouble(newValue));
+
+      changeSizeTextField(c);
     });
   }
 
   //true - did not fix
   private boolean fixInputFunction(TextField textField, String newValue, String oldValue){
-    if (newValue.isEmpty()){
-      textField.setText("0");
-      return false;
-    }
-
     if (!isDouble(newValue)) {
       textField.setText(oldValue);
       return false;
@@ -100,12 +102,14 @@ public class PrimaryController {
       Double value = strToDouble(newValue);
 
       if (value > strToDouble(xEnd.getText())) {
-        xBegin.setText(oldValue);
+        xBegin.setText(xEnd.getText());
         return;
       }
 
       Interpolation.setXBegin(value);
       charts.setXBegin(value);
+
+      changeSizeTextField(xBegin);
     });
 
     xEnd.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -117,12 +121,14 @@ public class PrimaryController {
       Double value = strToDouble(newValue);
 
       if (value < strToDouble(xBegin.getText())) {
-        xEnd.setText(oldValue);
+        xEnd.setText(xBegin.getText());
         return;
       }
 
       Interpolation.setXEnd(value);
       charts.setXEnd(value);
+
+      changeSizeTextField(xEnd);
     });
   }
 
@@ -139,7 +145,34 @@ public class PrimaryController {
       }
 
       Interpolation.setN(Integer.valueOf(newValue));
+
+      changeSizeTextField(n);
     });
+  }
+
+  private void changeSizeTextField(TextField textField){
+    if (textField == null){
+      return;
+    }
+
+    Text text = new Text(textField.getText());
+    text.setFont(textField.getFont());
+    new Scene(new Group(text));
+    text.applyCss();
+
+    double lengthText = text.getLayoutBounds().getWidth() + 20;
+
+    if (lengthText < textField.getMinWidth()){
+      lengthText = textField.getMinWidth();
+    }
+
+    if (lengthText > textField.getMaxWidth()){
+      lengthText = textField.getMaxWidth();
+    }
+
+
+
+    textField.setPrefWidth(lengthText);
   }
 
   public void buildGraph(ActionEvent event) {
