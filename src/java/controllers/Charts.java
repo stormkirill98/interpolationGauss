@@ -72,10 +72,13 @@ public class Charts {
     ObservableList<XYChart.Data<Double, Double>> data
             = FXCollections.observableArrayList();
 
+    data.clear();
+
     for (double x = xBegin; x < xEnd; x += 0.1){
       data.add(new XYChart.Data<>(x, Function.value(x)));
     }
 
+    function.getData().clear();
     function.setData(data);
 
     chart.getData().add(function);
@@ -91,13 +94,13 @@ public class Charts {
     ObservableList<XYChart.Data<Double, Double>> data
             = FXCollections.observableArrayList();
 
-
-    System.out.println(polynomialGauss.polynomsSize());
+    data.clear();
 
     for (double x = xBegin; x < 5; x += 0.1){
       data.add(new XYChart.Data<>(x, polynomialGauss.value(x)));
     }
 
+    polynomial.getData().clear();
     polynomial.setData(data);
     chart.getData().add(polynomial);
   }

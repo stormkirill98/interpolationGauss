@@ -10,7 +10,7 @@ public class Utility {
     return decimalFormat.format((value));
   }
 
-  static boolean zero(Double value){
+  static boolean isZero(Double value){
     return Math.abs(value) < TOLERANCE;
   }
 

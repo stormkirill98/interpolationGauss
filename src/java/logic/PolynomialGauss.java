@@ -57,9 +57,10 @@ public class PolynomialGauss {
 
     for (int i = 0; i < index - 1; i++){
       Double value = functionValues.get(i);
-      if (zero(value)){
+      if (isZero(value)){
         continue;
       }
+
       result += value * polynoms.value(x, i);
     }
 
@@ -70,12 +71,12 @@ public class PolynomialGauss {
   public String toString(){
     StringBuilder result = new StringBuilder();
 
-    if (!zero(value0)){
+    if (!isZero(value0)){
       result.append(format(value0)).append(" + ");
     }
     for (int i = 0; i < index; i++){
       Double value = functionValues.get(i);
-      if (zero(value)){
+      if (isZero(value)){
         continue;
       }
 

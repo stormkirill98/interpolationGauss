@@ -57,7 +57,7 @@ public class Interpolation {
     putNodeToMap(0);
 
     int i;
-    for (i = 1; i < 2 * n; i++) {
+    for (i = 1; i <= n; i++) {
       putNodeToMap(i);
       putNodeToMap(-i);
     }
@@ -86,7 +86,9 @@ public class Interpolation {
     System.out.print("Interpolation polynomial: ");
     System.out.println(interpolationPolynom);
 
-    System.out.println("P(2) = " + format(interpolationPolynom.value(2.0)));
+    for (double x = -xBegin; x <= xEnd; x += h){
+      System.out.printf("P(%.2f) = %.6f    F(%.2f) = %.6f\n", x, interpolationPolynom.value(x), x, Function.value(x));
+    }
 
     return interpolationPolynom;
   }
@@ -95,7 +97,7 @@ public class Interpolation {
     System.out.printf("Interpolation nodes: %.2f", interpolationNodes.get(0));
 
     int i;
-    for (i = 1; i < 2 * n; i++) {
+    for (i = 1; i <= n; i++) {
       System.out.printf(" %.2f", interpolationNodes.get(i));
       System.out.printf(" %.2f", interpolationNodes.get(-i));
     }
