@@ -7,7 +7,7 @@ public class Function {
   private static Double b = 0.0;
   private static Double c = 0.0;
 
-  public Function(Double a, Double b, Double c){
+  public Function(Double a, Double b, Double c) {
     Function.a = a;
     Function.b = b;
     Function.c = c;
@@ -15,25 +15,22 @@ public class Function {
 
   public static void setA(Double a) {
     Function.a = a;
-    System.out.println(Function.string());
   }
 
   public static void setB(Double b) {
     Function.b = b;
-    System.out.println(Function.string());
   }
 
   public static void setC(Double c) {
     Function.c = c;
-    System.out.println(Function.string());
   }
 
-  public static Double value(Double x){
+  public static Double value(Double x) {
     return a * Math.sin(Math.tan(b * x)) * Math.sin(c * x);
     //return Math.sin(x);
   }
 
-  public static String string(){
+  public static String string() {
     return format(a) + " * sin(tg" + format(b) + "*x) * sin(" + format(c) + "*x)";
   }
 }

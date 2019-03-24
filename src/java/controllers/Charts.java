@@ -22,10 +22,10 @@ public class Charts {
   private XYChart.Series<Number, Number> polynomial = new XYChart.Series<>();
 
   private double xBegin = 0.0,
-                 xEnd = 0.0;
+          xEnd = 0.0;
 
 
-  public Charts(Pane pane){
+  public Charts(Pane pane) {
     this.pane = pane;
 
     initChart();
@@ -36,7 +36,7 @@ public class Charts {
     pane.getChildren().add(chart);
   }
 
-  private void initChart(){
+  private void initChart() {
     chart = new LineChart<>(xAxis, yAxis);
     chart.setPrefSize(pane.getPrefWidth() - 5,
             pane.getPrefHeight() - 5);
@@ -48,17 +48,17 @@ public class Charts {
     chart.getData().add(polynomial);
   }
 
-  private void initAxises(){
+  private void initAxises() {
     xAxis.setTickUnit(0.1);
 
     yAxis.setTickUnit(0.1);
   }
 
-  private void initFunction(){
+  private void initFunction() {
     function.setName("Function");
   }
 
-  private void initPolynomial(){
+  private void initPolynomial() {
     polynomial.setName("Polynomial");
   }
 
@@ -70,13 +70,13 @@ public class Charts {
     this.xEnd = xEnd;
   }
 
-  public void buildFunction(){
+  public void buildFunction() {
     ObservableList<XYChart.Data<Number, Number>> data
             = FXCollections.observableArrayList();
 
     data.clear();
 
-    for (double x = xBegin; x < xEnd; x += 0.1){
+    for (double x = xBegin; x < xEnd; x += 0.1) {
       data.add(new XYChart.Data<>(x, Function.value(x)));
     }
 
@@ -84,8 +84,8 @@ public class Charts {
     function.setData(data);
   }
 
-  public void buildPolynomial(PolynomialGauss polynomialGauss){
-    if (polynomialGauss == null){
+  public void buildPolynomial(PolynomialGauss polynomialGauss) {
+    if (polynomialGauss == null) {
       return;
     }
 
@@ -94,7 +94,7 @@ public class Charts {
 
     data.clear();
 
-    for (double x = xBegin; x < 5; x += 0.1){
+    for (double x = xBegin; x < 5; x += 0.1) {
       data.add(new XYChart.Data<>(x, polynomialGauss.value(x)));
     }
 

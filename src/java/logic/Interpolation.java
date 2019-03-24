@@ -9,10 +9,10 @@ public class Interpolation {
   //count interpolation nodes
   private static Integer n;
 
-  public Interpolation(){
+  public Interpolation() {
     if (xBegin == null
             || xEnd == null
-            || n == null){
+            || n == null) {
       return;
     }
 
@@ -46,7 +46,7 @@ public class Interpolation {
     System.out.print("Interpolation polynomial: ");
     System.out.println(interpolationPolynom);
 
-    for (double x = -xBegin; x <= xEnd; x += h){
+    for (double x = -xBegin; x <= xEnd; x += h) {
       System.out.printf("P(%.2f) = %.6f    F(%.2f) = %.6f\n", x, interpolationPolynom.value(x), x, Function.value(x));
     }
 

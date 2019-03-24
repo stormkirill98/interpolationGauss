@@ -25,7 +25,6 @@ public class PrimaryController {
 
   public TextField n;
 
-
   private Charts charts;
 
   @FXML
@@ -52,7 +51,7 @@ public class PrimaryController {
 
   private void addChangeListenerToInputFunction() {
     a.textProperty().addListener((observable, oldValue, newValue) -> {
-      if (!fixInputFunction(a, newValue, oldValue)){
+      if (!fixInputFunction(a, newValue, oldValue)) {
         return;
       }
 
@@ -62,7 +61,7 @@ public class PrimaryController {
     });
 
     b.textProperty().addListener((observable, oldValue, newValue) -> {
-      if(!fixInputFunction(b, newValue, oldValue)){
+      if (!fixInputFunction(b, newValue, oldValue)) {
         return;
       }
 
@@ -72,7 +71,7 @@ public class PrimaryController {
     });
 
     c.textProperty().addListener((observable, oldValue, newValue) -> {
-      if (!fixInputFunction(c, newValue, oldValue)){
+      if (!fixInputFunction(c, newValue, oldValue)) {
         return;
       }
 
@@ -83,7 +82,7 @@ public class PrimaryController {
   }
 
   //true - did not fix
-  private boolean fixInputFunction(TextField textField, String newValue, String oldValue){
+  private boolean fixInputFunction(TextField textField, String newValue, String oldValue) {
     if (!isDouble(newValue)) {
       textField.setText(oldValue);
       return false;
@@ -132,14 +131,14 @@ public class PrimaryController {
     });
   }
 
-  private void addChangeListenerToInputN(){
+  private void addChangeListenerToInputN() {
     n.textProperty().addListener((observable, oldValue, newValue) -> {
-      if (newValue.isEmpty()){
+      if (newValue.isEmpty()) {
         n.setText("1");
         return;
       }
 
-      if (!isNatural(newValue)){
+      if (!isNatural(newValue)) {
         n.setText(oldValue);
         return;
       }
@@ -150,8 +149,8 @@ public class PrimaryController {
     });
   }
 
-  private void changeSizeTextField(TextField textField){
-    if (textField == null){
+  private void changeSizeTextField(TextField textField) {
+    if (textField == null) {
       return;
     }
 
@@ -162,14 +161,13 @@ public class PrimaryController {
 
     double lengthText = text.getLayoutBounds().getWidth() + 20;
 
-    if (lengthText < textField.getMinWidth()){
+    if (lengthText < textField.getMinWidth()) {
       lengthText = textField.getMinWidth();
     }
 
-    if (lengthText > textField.getMaxWidth()){
+    if (lengthText > textField.getMaxWidth()) {
       lengthText = textField.getMaxWidth();
     }
-
 
 
     textField.setPrefWidth(lengthText);

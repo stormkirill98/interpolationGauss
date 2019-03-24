@@ -1,8 +1,8 @@
 package logic;
 
-import java.util.*;
-
-import static logic.Utility.format;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.TreeMap;
 
 public class FiniteCentralDifferences {
   private TreeMap<Double, List<Double>> table;
@@ -71,7 +71,7 @@ public class FiniteCentralDifferences {
 
     result.append(String.format("%6s", "k"))
             .append(String.format("%6s", "Fk"));
-    for (int i = 1; i < 2 * n + 2; i++){
+    for (int i = 1; i < 2 * n + 2; i++) {
       result.append(String.format("   d%dFk", i));
     }
     result.append("\n");
