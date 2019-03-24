@@ -20,7 +20,7 @@ public class Polynomial extends ArrayList<Multiplier> {
     if (size() > 1) {
       n = size() % 2 == 0
               ? size() / 2
-              : -(size() - 1);
+              : -(size() + 1) / 2;
       k = size() + 1;
     }
 

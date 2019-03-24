@@ -7,56 +7,37 @@ import static logic.Utility.*;
 
 public class PolynomialGauss {
 
-  //function value for every added
-  private List<Double> functionValues = new ArrayList<>();
+  private FiniteCentralDifferences finiteCentralDifferences;
   private Polynomial polynoms = new Polynomial();
 
-  private Double value0;
-  private Double value1;
+  private int n = 0;
 
-  private int index = 0;
 
-  public PolynomialGauss(){
-    value0 = Function.value(0.0);
-    value1 = Function.value(0.5);
+  public PolynomialGauss(Double xBegin, Double h, int n){
+    this.n = n;
+
+    finiteCentralDifferences = new FiniteCentralDifferences(xBegin, h, n);
+    finiteCentralDifferences.build();
+
+    System.out.println(finiteCentralDifferences);
   }
 
-  public void add(){
-    addFunctionValue();
-    addPolynomial();
-    index++;
-  }
-
-  //TODO: не хватате последнего коэффициента
-  private void addFunctionValue(){
-    if (index == 0){
-      functionValues.add(value1);
-      return;
+  public void countPolynomial(){
+    for (int i = 0; i < 2 * n + 1; i++) {
+      polynoms.add();//один лишний элемент, и неправильный n
     }
-    if (index == 1){
-      functionValues.add(value0 * value0);
-      return;
-    }
-
-    Double value = functionValues.get(index - 2);
-    value = index % 2 == 0
-            ? value * value1 * value1
-            : value * value0 * value0;
-
-    functionValues.add(value);
   }
 
-  private void addPolynomial(){
-    polynoms.add();
-  }
-
+  @SuppressWarnings("Duplicates")
   public Double value(Double x){
     Double result = 0.0;
 
-    result += value0;
+    result += finiteCentralDifferences.get(0.0, 0);
 
-    for (int i = 0; i < index - 1; i++){
-      Double value = functionValues.get(i);
+    for (int i = 0; i < 2 * n + 1; i++){
+      Double key = i % 2 == 0 ? 0.5 : 0.0;
+
+      Double value = finiteCentralDifferences.get(key, i + 1);
       if (isZero(value)){
         continue;
       }
@@ -67,15 +48,20 @@ public class PolynomialGauss {
     return result;
   }
 
+  @SuppressWarnings("Duplicates")
   @Override
   public String toString(){
     StringBuilder result = new StringBuilder();
 
+    Double value0 = finiteCentralDifferences.get(0.0, 0);
     if (!isZero(value0)){
       result.append(format(value0)).append(" + ");
     }
-    for (int i = 0; i < index; i++){
-      Double value = functionValues.get(i);
+
+    for (int i = 0; i < 2 * n + 1; i++){
+      Double key = i % 2 == 0 ? 0.5 : 0.0;
+
+      Double value = finiteCentralDifferences.get(key, i + 1);
       if (isZero(value)){
         continue;
       }
@@ -88,9 +74,5 @@ public class PolynomialGauss {
       result.delete(result.length() - 2, result.length());
     }
     return result.toString();
-  }
-
-  public int polynomsSize(){
-    return polynoms.size();
   }
 }

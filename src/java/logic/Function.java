@@ -30,7 +30,7 @@ public class Function {
 
   public static Double value(Double x){
     //return a * Math.sin(Math.tan(b * x)) * Math.sin(c * x);
-    return x*x*x;
+    return Math.sin(x);
   }
 
   public static String string(){

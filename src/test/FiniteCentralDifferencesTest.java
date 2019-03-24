@@ -9,20 +9,14 @@ public class FiniteCentralDifferencesTest {
   public void setUp() throws Exception {
     finiteCentralDifferences
             = new FiniteCentralDifferences(-2.0,
-            2.0,
-            0.0,
             1.0,
             2);
 
   }
 
-  @Test
-  public void printBefore(){
-    System.out.println(finiteCentralDifferences);
-  }
 
   @Test
-  public void printAfter(){
+  public void print(){
     finiteCentralDifferences.build();
     System.out.println(finiteCentralDifferences);
   }

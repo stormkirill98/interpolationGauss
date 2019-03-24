@@ -8,8 +8,6 @@ public class FiniteCentralDifferences {
   private TreeMap<Double, List<Double>> table;
 
   private Double xBegin = 0.0;
-  private Double xEnd = 0.0;
-  private Double x0 = 0.0;
 
   private Double h = 0.0;
   private int n = 0;
@@ -17,15 +15,11 @@ public class FiniteCentralDifferences {
   private final double keyStep = 0.5;
 
   public FiniteCentralDifferences(Double xBegin,
-                                  Double xEnd,
-                                  Double x0,
                                   Double h,
                                   int n) {
     table = new TreeMap<>();
 
     this.xBegin = xBegin;
-    this.xEnd = xEnd;
-    this.x0 = x0;
 
     this.h = h;
     this.n = n;
