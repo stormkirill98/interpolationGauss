@@ -15,6 +15,7 @@ public class App extends Application {
     public void start(Stage stage) throws Exception{
         scene = new Scene(loadFXML("primary"));
         stage.setScene(scene);
+        scene.getStylesheets().add("style.css");
         stage.show();
     }
 
