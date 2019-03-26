@@ -1,3 +1,4 @@
+import controllers.PrimaryController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,19 +14,19 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception{
-        scene = new Scene(loadFXML("primary"));
+        FXMLLoader fxmlLoader = loadFXML("primary");
+
+        PrimaryController primaryController = fxmlLoader.getController();
+        primaryController.setStage(stage);
+
+        scene = new Scene(fxmlLoader.getRoot());
         stage.setScene(scene);
         scene.getStylesheets().add("style.css");
         stage.show();
     }
 
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/views/" + fxml + ".fxml"));
-        return fxmlLoader.load();
+    private static FXMLLoader loadFXML(String fxml) throws IOException {
+        return new FXMLLoader(App.class.getResource("/views/" + fxml + ".fxml"));
     }
 
 

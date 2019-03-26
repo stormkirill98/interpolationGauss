@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import logic.Function;
 import logic.Interpolation;
 import logic.PolynomialGauss;
@@ -26,6 +27,8 @@ public class PrimaryController {
   public TextField n;
 
   private Charts charts;
+
+  private Stage stage;
 
   @FXML
   public void initialize() {
@@ -181,6 +184,14 @@ public class PrimaryController {
 
 
     charts.buildPolynomial(polynomialGauss);
+  }
+
+  public void setStage(Stage stage) {
+    this.stage = stage;
+    addListenerChangeWindowSize();
+  }
+
+  private void addListenerChangeWindowSize(){
 
   }
 }

@@ -6,7 +6,7 @@ public class FiniteCentralDifferencesTest {
   FiniteCentralDifferences finiteCentralDifferences;
 
   @Before
-  public void setUp() throws Exception {
+  public void setUp() {
     finiteCentralDifferences
             = new FiniteCentralDifferences(-2.0,
             1.0,
@@ -16,8 +16,8 @@ public class FiniteCentralDifferencesTest {
 
 
   @Test
-  public void print(){
+  public void print() {
     finiteCentralDifferences.build();
-    System.out.println(finiteCentralDifferences);
+    //System.out.println(finiteCentralDifferences);
   }
 }
