@@ -101,4 +101,8 @@ public class Charts {
     polynomial.getData().clear();
     polynomial.setData(data);
   }
+
+  public LineChart<Number, Number> getChart() {
+    return chart;
+  }
 }

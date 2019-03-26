@@ -1,5 +1,7 @@
 package controllers;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
@@ -11,6 +13,8 @@ import javafx.stage.Stage;
 import logic.Function;
 import logic.Interpolation;
 import logic.PolynomialGauss;
+
+import javax.swing.event.ChangeEvent;
 
 import static logic.Utility.*;
 
@@ -192,6 +196,28 @@ public class PrimaryController {
   }
 
   private void addListenerChangeWindowSize(){
+    if (stage == null){
+      return;
+    }
 
+    stage.widthProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue.doubleValue() < 600){
+        stage.setWidth(oldValue.doubleValue());
+        return;
+      }
+
+      chartPane.setPrefWidth(newValue.doubleValue() - 400);
+      charts.getChart().setPrefWidth(newValue.doubleValue() - 405);
+    });
+
+    stage.heightProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue.doubleValue() < 260){
+        stage.setHeight(oldValue.doubleValue());
+        return;
+      }
+
+      chartPane.setPrefHeight(newValue.doubleValue() - 10);
+      charts.getChart().setPrefHeight(newValue.doubleValue() - 15);
+    });
   }
 }

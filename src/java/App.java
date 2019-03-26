@@ -16,13 +16,13 @@ public class App extends Application {
     public void start(Stage stage) throws Exception{
         FXMLLoader fxmlLoader = loadFXML("primary");
 
-        PrimaryController primaryController = fxmlLoader.getController();
-        primaryController.setStage(stage);
-
-        scene = new Scene(fxmlLoader.getRoot());
+        scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         scene.getStylesheets().add("style.css");
         stage.show();
+
+        PrimaryController primaryController = fxmlLoader.getController();
+        primaryController.setStage(stage);
     }
 
     private static FXMLLoader loadFXML(String fxml) throws IOException {
