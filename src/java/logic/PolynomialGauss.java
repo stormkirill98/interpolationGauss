@@ -17,7 +17,7 @@ public class PolynomialGauss {
     finiteCentralDifferences = new FiniteCentralDifferences(xBegin, h, n);
     finiteCentralDifferences.build();
 
-    System.out.println(finiteCentralDifferences);
+    //System.out.println(finiteCentralDifferences);
   }
 
   public void countPolynomial() {

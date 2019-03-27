@@ -18,7 +18,7 @@ public class Interpolation {
 
     x0 = (xEnd + xBegin) / 2;
     h = (xEnd - xBegin) / (2 * n);
-    print();
+    //print();
   }
 
   public static void setXBegin(Double xBegin) {
@@ -43,13 +43,13 @@ public class Interpolation {
     PolynomialGauss interpolationPolynom = new PolynomialGauss(xBegin, h, n);
     interpolationPolynom.countPolynomial();
 
-    System.out.print("Interpolation polynomial: ");
-    System.out.println(interpolationPolynom);
+    //System.out.print("Interpolation polynomial: ");
+    //System.out.println(interpolationPolynom);
 
-    for (double x = -xBegin; x <= xEnd; x += h) {
+    /*for (double x = -xBegin; x <= xEnd; x += h) {
       System.out.printf("P(%.2f) = %.6f    F(%.2f) = %.6f\n", x, interpolationPolynom.value(x), x, Function.value(x));
     }
-
+*/
     return interpolationPolynom;
   }
 

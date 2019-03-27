@@ -34,7 +34,7 @@ public class Utility {
   }
 
   public static boolean isNatural(String str) {
-    return str.matches("\\d+");
+    return str.matches("\\d*");
   }
 }
 
