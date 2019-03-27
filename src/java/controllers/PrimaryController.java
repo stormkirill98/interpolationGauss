@@ -140,14 +140,13 @@ public class PrimaryController {
 
   private void addChangeListenerToInputN() {
     n.textProperty().addListener((observable, oldValue, newValue) -> {
-      if (newValue.isEmpty()) {
-        n.setText("1");
-        return;
-      }
-
       if (!isNatural(newValue)) {
         n.setText(oldValue);
         return;
+      }
+
+      if (newValue.isEmpty()){
+        newValue = "0";
       }
 
       Interpolation.setN(Integer.valueOf(newValue));
