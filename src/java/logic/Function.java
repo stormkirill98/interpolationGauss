@@ -27,7 +27,7 @@ public class Function {
 
   public static Double value(Double x) {
     //return a * Math.sin(Math.tan(b * x)) * Math.sin(c * x);
-    return Math.tan(x);
+    return Math.sin(x);
   }
 
   public static String string() {

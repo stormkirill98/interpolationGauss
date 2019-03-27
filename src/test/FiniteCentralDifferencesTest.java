@@ -18,6 +18,6 @@ public class FiniteCentralDifferencesTest {
   @Test
   public void print() {
     finiteCentralDifferences.build();
-    //System.out.println(finiteCentralDifferences);
+    System.out.println(finiteCentralDifferences);
   }
 }

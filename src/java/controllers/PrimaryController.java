@@ -53,7 +53,7 @@ public class PrimaryController {
     xBegin.setText("-5");
     xEnd.setText("5");
 
-    n.setText("10");
+    n.setText("5");
   }
 
   private void addChangeListenerToInputFunction() {

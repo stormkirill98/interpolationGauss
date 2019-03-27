@@ -20,9 +20,12 @@ public class Charts {
 
   private XYChart.Series<Number, Number> function = new XYChart.Series<>();
   private XYChart.Series<Number, Number> polynomial = new XYChart.Series<>();
+  private XYChart.Series<Number, Number> difference = new XYChart.Series<>();
 
   private double xBegin = 0.0,
           xEnd = 0.0;
+
+  private double step = 0.001;
 
 
   public Charts(Pane pane) {
@@ -32,6 +35,7 @@ public class Charts {
     initAxises();
     initFunction();
     initPolynomial();
+    initDifference();
 
     pane.getChildren().add(chart);
   }
@@ -46,6 +50,7 @@ public class Charts {
 
     chart.getData().add(function);
     chart.getData().add(polynomial);
+    chart.getData().add(difference);
   }
 
   private void initAxises() {
@@ -62,6 +67,10 @@ public class Charts {
     polynomial.setName("Polynomial");
   }
 
+  private void initDifference(){
+    difference.setName("Difference");
+  }
+
   public void setXBegin(double xStart) {
     this.xBegin = xStart;
   }
@@ -74,9 +83,7 @@ public class Charts {
     ObservableList<XYChart.Data<Number, Number>> data
             = FXCollections.observableArrayList();
 
-    data.clear();
-
-    for (double x = xBegin; x < xEnd; x += 0.1) {
+    for (double x = xBegin; x < xEnd; x += step) {
       data.add(new XYChart.Data<>(x, Function.value(x)));
     }
 
@@ -92,14 +99,34 @@ public class Charts {
     ObservableList<XYChart.Data<Number, Number>> data
             = FXCollections.observableArrayList();
 
-    data.clear();
-
-    for (double x = xBegin; x < 5; x += 0.1) {
+    for (double x = xBegin; x < xEnd; x += step) {
       data.add(new XYChart.Data<>(x, polynomialGauss.value(x)));
     }
 
     polynomial.getData().clear();
     polynomial.setData(data);
+
+    buildDifference();
+  }
+
+  private void buildDifference(){
+    ObservableList<XYChart.Data<Number, Number>> data
+            = FXCollections.observableArrayList();
+
+    ObservableList<XYChart.Data<Number, Number>> dataFunction
+            = function.getData();
+    ObservableList<XYChart.Data<Number, Number>> dataPolynomial
+            = polynomial.getData();
+
+    for (int i = 0; i < dataFunction.size(); i++){
+      Number x = dataFunction.get(i).getXValue();
+      Number y = dataFunction.get(i).getYValue().doubleValue()
+                  - dataPolynomial.get(i).getYValue().doubleValue();
+      data.add(new XYChart.Data<>(x,y));
+    }
+
+    difference.getData().clear();
+    difference.setData(data);
   }
 
   public LineChart<Number, Number> getChart() {
