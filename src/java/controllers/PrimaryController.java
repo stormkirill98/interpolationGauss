@@ -1,7 +1,5 @@
 package controllers;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
@@ -13,8 +11,6 @@ import javafx.stage.Stage;
 import logic.Function;
 import logic.Interpolation;
 import logic.PolynomialGauss;
-
-import javax.swing.event.ChangeEvent;
 
 import static logic.Utility.*;
 
@@ -29,6 +25,10 @@ public class PrimaryController {
   public TextField xEnd;
 
   public TextField n;
+
+  public TextField maxValue;
+  public TextField maxX;
+  public TextField maxY;
 
   private Charts charts;
 
@@ -58,7 +58,7 @@ public class PrimaryController {
 
   private void addChangeListenerToInputFunction() {
     a.textProperty().addListener((observable, oldValue, newValue) -> {
-      if (!fixInputFunction(a, newValue, oldValue)) {
+      if (!fixFunctionInput(a, newValue, oldValue)) {
         return;
       }
 
@@ -68,7 +68,7 @@ public class PrimaryController {
     });
 
     b.textProperty().addListener((observable, oldValue, newValue) -> {
-      if (!fixInputFunction(b, newValue, oldValue)) {
+      if (!fixFunctionInput(b, newValue, oldValue)) {
         return;
       }
 
@@ -78,7 +78,7 @@ public class PrimaryController {
     });
 
     c.textProperty().addListener((observable, oldValue, newValue) -> {
-      if (!fixInputFunction(c, newValue, oldValue)) {
+      if (!fixFunctionInput(c, newValue, oldValue)) {
         return;
       }
 
@@ -89,7 +89,7 @@ public class PrimaryController {
   }
 
   //true - did not fix
-  private boolean fixInputFunction(TextField textField, String newValue, String oldValue) {
+  private boolean fixFunctionInput(TextField textField, String newValue, String oldValue) {
     if (!isDouble(newValue)) {
       textField.setText(oldValue);
       return false;
@@ -185,8 +185,15 @@ public class PrimaryController {
     Interpolation interpolation = new Interpolation();
     PolynomialGauss polynomialGauss = interpolation.countInterpolationPolynom();
 
-
     charts.buildPolynomial(polynomialGauss);
+
+    fillMaxValues();
+  }
+
+  private void fillMaxValues(){
+    maxValue.setText(String.format("%5.2f", charts.getMaxValue()));
+    maxX.setText(String.format("%5.2f", charts.getMaxX()));
+    maxY.setText(String.format("%5.2f", charts.getMaxY()));
   }
 
   public void setStage(Stage stage) {

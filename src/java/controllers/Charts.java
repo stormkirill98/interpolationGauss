@@ -28,6 +28,11 @@ public class Charts {
   private double step = 0.001;
 
 
+  private double maxValue = 0.0;
+  private double maxX = 0.0,
+                 maxY = 0.0;
+
+
   public Charts(Pane pane) {
     this.pane = pane;
 
@@ -110,6 +115,8 @@ public class Charts {
   }
 
   private void buildDifference(){
+    maxValue = 0.0;
+
     ObservableList<XYChart.Data<Number, Number>> data
             = FXCollections.observableArrayList();
 
@@ -123,6 +130,12 @@ public class Charts {
       Number y = dataFunction.get(i).getYValue().doubleValue()
                   - dataPolynomial.get(i).getYValue().doubleValue();
       data.add(new XYChart.Data<>(x,y));
+
+      if (Math.abs(y.doubleValue()) > maxValue){
+        maxValue = Math.abs(y.doubleValue());
+        maxX = x.doubleValue();
+        maxY = y.doubleValue();
+      }
     }
 
     difference.getData().clear();
@@ -131,5 +144,17 @@ public class Charts {
 
   public LineChart<Number, Number> getChart() {
     return chart;
+  }
+
+  public double getMaxValue() {
+    return maxValue;
+  }
+
+  public double getMaxX() {
+    return maxX;
+  }
+
+  public double getMaxY() {
+    return maxY;
   }
 }
