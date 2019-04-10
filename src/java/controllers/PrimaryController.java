@@ -223,7 +223,7 @@ public class PrimaryController {
       }
 
       chartPane.setPrefHeight(newValue.doubleValue() - 10);
-      charts.getChart().setPrefHeight(newValue.doubleValue() - 15);
+      charts.getChart().setPrefHeight(newValue.doubleValue() - 55);
     });
   }
 }

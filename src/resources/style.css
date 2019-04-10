@@ -1,7 +1,53 @@
-.default-color0.chart-series-line { -fx-stroke: green; }
-.default-color1.chart-series-line { -fx-stroke: red; }
-.default-color2.chart-series-line { -fx-stroke: #000c90; }
+/*Non active lines*/
+#nonActiveFunctionSymbol {
+    -fx-background-color: green, white;
+    -fx-scale-x: 1.8;
+    -fx-scale-y: 1.8;
+}
 
-.default-color0.chart-line-symbol { -fx-background-color: green, white; }
-.default-color1.chart-line-symbol { -fx-background-color: red, white; }
-.default-color2.chart-line-symbol { -fx-background-color: #000c90, white; }
+#nonActivePolynomialSymbol {
+    -fx-background-color: red, white;
+    -fx-scale-x: 1.8;
+    -fx-scale-y: 1.8;
+}
+
+#nonActiveDifferenceSymbol {
+    -fx-background-color: #000c90, white;
+    -fx-scale-x: 1.8;
+    -fx-scale-y: 1.8;
+}
+
+#nonVisibleLine {
+    -fx-stroke: rgba(0,0,0,0);
+}
+
+/*Active lines*/
+#activeFunctionSymbol {
+    -fx-background-color: green, green;
+    -fx-scale-x: 1.8;
+    -fx-scale-y: 1.8;
+}
+
+#visibleFunctionLine {
+    -fx-stroke: green;
+}
+
+#activePolynomialSymbol {
+    -fx-background-color: red, red;
+    -fx-scale-x: 1.8;
+    -fx-scale-y: 1.8;
+}
+
+#visiblePolynomialLine {
+    -fx-stroke: red;
+}
+
+#activeDifferenceSymbol {
+    -fx-background-color: #000c90, #000c90;
+    -fx-scale-x: 1.8;
+    -fx-scale-y: 1.8;
+}
+
+#visibleDifferenceLine {
+    -fx-stroke: #000c90;
+}

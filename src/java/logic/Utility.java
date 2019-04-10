@@ -36,5 +36,9 @@ public class Utility {
   public static boolean isNatural(String str) {
     return str.matches("\\d*");
   }
+
+  public enum Lines {
+    FUNCTION, POLYNOMIAL, DIFFERENCE
+  }
 }
 

@@ -6,7 +6,7 @@ import static logic.Utility.isZero;
 public class PolynomialGauss {
 
   private FiniteCentralDifferences finiteCentralDifferences;
-  private Polynomial polynoms = new Polynomial();
+  private Polynomial polynomials = new Polynomial();
 
   private int n = 0;
 
@@ -22,7 +22,7 @@ public class PolynomialGauss {
 
   public void countPolynomial() {
     for (int i = 0; i < 2 * n + 1; i++) {
-      polynoms.add();
+      polynomials.add();
     }
   }
 
@@ -40,7 +40,7 @@ public class PolynomialGauss {
         continue;
       }
 
-      result += value * polynoms.value(x, i);
+      result += value * polynomials.value(x, i);
     }
 
     return result;
@@ -65,7 +65,7 @@ public class PolynomialGauss {
       }
 
       result.append(format(value)).append("*")
-              .append(polynoms.toString(i)).append("\n+ ");
+              .append(polynomials.toString(i)).append("\n+ ");
     }
 
     if (result.length() > 2) {
